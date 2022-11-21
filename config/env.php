@@ -1,13 +1,13 @@
 <?php
     /** URL raiz del proyecto */    
-    define('RUTA', 'splendorous-pudding-e9fe26.netlify.app');
+    define('RUTA', 'https://stalwart-fox-4694c4.netlify.app');
 
     $db_config = [
-        'db_user' => 'root',
-        'db_pass' => 'xSwD4Wi0aEInYO8ttnhE',
-        'db_name' => 'railway',
-        'db_host' => 'containers-us-west-21.railway.app',
-        'db_port' => '6332'
+        'db_user' => '',
+        'db_pass' => '',
+        'db_name' => '',
+        'db_host' => '',
+        'db_port' => ''
     ];
     $proPage = 12;
 ?>
