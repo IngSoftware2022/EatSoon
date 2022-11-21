@@ -1,6 +1,6 @@
 <?php
     /** URL raiz del proyecto */    
-    define('RUTA', 'https://eatsoon-production-9931.up.railway.app');
+    define('RUTA', 'splendorous-pudding-e9fe26.netlify.app');
 
     $db_config = [
         'db_user' => 'root',
