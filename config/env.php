@@ -1,6 +1,6 @@
 <?php
     /** URL raiz del proyecto */    
-    define('RUTA', 'http://eatsoon-production-6da2.up.railway.app');
+    define('RUTA', 'https://eatsoon-production-6da2.up.railway.app');
 
     $db_config = [
         'db_user' => 'root',
