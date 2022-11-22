@@ -1,13 +1,13 @@
 <?php
     /** URL raiz del proyecto */    
-    define('RUTA', 'https://stalwart-fox-4694c4.netlify.app');
+    define('RUTA', 'http://localhost:80/EatSoon/EatSoon');
 
     $db_config = [
-        'db_user' => '',
+        'db_user' => 'root',
         'db_pass' => '',
-        'db_name' => '',
-        'db_host' => '',
-        'db_port' => ''
+        'db_name' => 'eatsoon',
+        'db_host' => '127.0.0.1',
+        'db_port' => '3306'
     ];
     $proPage = 12;
 ?>

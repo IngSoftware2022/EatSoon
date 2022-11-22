@@ -1,7 +1,7 @@
-//Crear cuenta
+//login
 swal({
-     title: "Crea tu Cuenta!",
-    text: "No te olvides llenar todos lo campos!!!",
+     title: "Inicia Sesión!",
+    text: "Disfruta de EatSoon!!!",
     icon: "info",
     closeOnClickOutside: false,
     timer: 5000,

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?=RUTA?>/assets/css/styles.css">
-    
+     
     
 
     <title><?=$title?></title>
@@ -46,20 +46,20 @@
 
                     <ul class="main-menu">
 
-                        <li class="menu-item">
+                    <li class="menu-item">
                             <i class="bi bi-clipboard-plus-fill" style="font-size: 1.5rem; color: white;"></i>
                             <a href="registrar.php" id="nav-iniciar">Registrar Producto</a>
                             
                         </li>
 
-                        <li class="menu-item">
+                        <!-- <li class="menu-item">
                             <i class="bi-person-circle" style="font-size: 1.5rem; color: white;"></i>
                             <a href="login.php" id="nav-iniciar">Inicia Sesion</a>
                         </li>
                         <li class="menu-item">
                             <i class="bi-box-arrow-in-right" style="font-size: 1.5rem; color: white;"></i>
                             <a href="crear.php" id="nav-crear">Crear cuenta</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>
