@@ -1,13 +1,13 @@
 <?php
     /** URL raiz del proyecto */    
-    define('RUTA', 'http://localhost:80/EatSoon/EatSoon');
+    define('RUTA', 'http://eatsoon-production-6da2.up.railway.app');
 
     $db_config = [
         'db_user' => 'root',
-        'db_pass' => '',
-        'db_name' => 'eatsoon',
-        'db_host' => '127.0.0.1',
-        'db_port' => '3306'
+        'db_pass' => 't73TNOqxehordKAxwbnV',
+        'db_name' => 'railway',
+        'db_host' => 'containers-us-west-85.railway.app',
+        'db_port' => '5748'
     ];
     $proPage = 12;
 ?>
