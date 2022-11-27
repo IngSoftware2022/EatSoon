@@ -33,12 +33,12 @@
         }
     
 
-    if(!$create){
+         if(!$create){
          echo "La cuenta ingresado ya existe";
          
-    }
+        }
    
-        header('Location: crear.php');
+    //    header('Location: crear.php');
     }
         
     $title = "Creacion de Cuenta"; // Nombre del title
