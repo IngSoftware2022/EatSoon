@@ -10,7 +10,7 @@
     /** Verificar si se envio por el metodo POST */
     if($_SERVER['REQUEST_METHOD'] == 'POST'){    
         $data = [
-            'usuario' => $_POST['usuario'],
+            'usuario' => $_POST['correo'],
             'password' => $_POST['password']
         ];
 

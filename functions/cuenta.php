@@ -20,7 +20,7 @@
             ]);
 
 // Para direccionar automaticamente al inicio despues de crear una cuenta
-          header("Location: index.php");
+          header("Location: index_usuario_creado.php");
               die();
 
 
