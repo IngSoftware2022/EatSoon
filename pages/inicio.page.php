@@ -128,6 +128,20 @@
                                 </div>
                             </div>                            
                             <!-- fin código modal -->
+
+                            <div class="cta_tarjeta-rest">
+                                <button class="btn text-light" style="padding: .25rem 1rem;
+                                border-radius: 4px;
+                                background-color: goldenrod;
+                                color: white;
+                                font-weight: bold;
+                                text-align: center;"> Añadir Carrito<button type="button" class="btn text-light " data-bs-toggle="modal" data-bs-target="#my<?php echo $producto['id_producto'];?>" style="padding: .25rem 1rem;
+                                border-radius: 4px;                              background-color: goldenrod;
+                                color: white;
+                                font-weight: bold;
+                                text-align: center;">Más Información </button>                           
+                            </div>ss
+                            
                         </div>
                     </div>
                 </div>
