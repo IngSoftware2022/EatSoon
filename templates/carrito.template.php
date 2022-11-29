@@ -26,22 +26,24 @@
                                 <td><img src="<?php echo RUTA . '/storage/' . $carito['imagen'] ?>" width="30" /> <?php echo ($carito['nombre_producto']); ?></td>
                                 <td><?php echo ($carito['cantidad']); ?></td>
                                 <td>
-                                    <form action="carrito.php" method="post">
-                                        <input type="hidden" name="action" value="menos" />
-                                        <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
-                                        <input type="hidden" name="carrito_id" value="<?php echo $carito['carrito_id']; ?>" />
-                                        <button type="submit" style="color:white;background: goldenrod;">-</button>
-                                    </form>
-                                    <form action="carrito.php" method="post">
-                                        <input type="hidden" name="action" value="mas" />
-                                        <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
-                                        <input type="hidden" name="carrito_id" value="<?php echo $carito['carrito_id']; ?>" />
-                                        <button type="submit" style="color:white;background: goldenrod;">+</button>
-                                    </form>
+                                    <div style="display: inline-flex;">
+                                        <form action="carrito.php" method="post">
+                                            <input type="hidden" name="action" value="menos" />
+                                            <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                                            <input type="hidden" name="carrito_id" value="<?php echo $carito['carrito_id']; ?>" />
+                                            <button type="submit" style="color:white;background: goldenrod;">-</button>
+                                        </form>
+                                        <form action="carrito.php" method="post">
+                                            <input type="hidden" name="action" value="mas" />
+                                            <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                                            <input type="hidden" name="carrito_id" value="<?php echo $carito['carrito_id']; ?>" />
+                                            <button type="submit" style="color:white;background: goldenrod;">+</button>
+                                        </form>
+                                    </div>
                                 </td>
                                 <td><?php echo ((int)$carito['cantidad'] * (float)$carito['precio_producto']); ?></td>
                                 <td>
-                                    <form action="" method="post">
+                                    <form action="carrito.php" method="post">
                                         <input type="hidden" name="action" value="delete" />
                                         <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
                                         <input type="hidden" name="carrito_id" value="<?php echo $carito['carrito_id']; ?>" />

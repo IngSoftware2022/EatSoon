@@ -82,7 +82,15 @@ function totalProductosEnCarrito($con, $data)
 function enCarrito($con, $data)
 {
     $code = $data["code"];
-    $query = $con->prepare("SELECT * FROM carrito JOIN producto ON (carrito.producto_id=producto.id_producto) WHERE code = '$code'");
+    $query = $con->prepare("SELECT carrito.*, producto.id_producto,
+producto.fecha_publicacion,
+producto.nombre_producto,
+producto.precio_producto,
+producto.fecha_caducidad,
+producto.desc_producto,
+producto.cantidad as cantidad_producto,
+producto.imagen,
+producto.pedido_codPedido  FROM carrito JOIN producto ON (carrito.producto_id=producto.id_producto) WHERE code = '$code'");
     $query->execute();
     return $query->fetchAll();
 }
@@ -130,15 +138,18 @@ function desminuirItem($con, $data)
         $existe = $query2->fetchAll();
         if (count($existe) > 0) {
             $carr = $con->prepare("UPDATE carrito SET cantidad = ? WHERE carrito_id = ? AND code= ?");
-            $contar = (int)$existe[0]['cantidad'] ? (int)$existe[0]['cantidad'] - 1 : 0;
-            /*array respetando el orden de cada valor*/
-            $arrParams = array($contar, $pro, $cod);
-            /*Pasamos el array en el execute*/
-            if ($carr->execute($arrParams)) {
-                return true;
-            } else {
-                return false;
+            if ((int)$existe[0]['cantidad'] > 1) {
+                $contar = (int)$existe[0]['cantidad'] - 1;
+                /*array respetando el orden de cada valor*/
+                $arrParams = array($contar, $pro, $cod);
+                /*Pasamos el array en el execute*/
+                if ($carr->execute($arrParams)) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
+            return false;
         }
     }
     return false;
