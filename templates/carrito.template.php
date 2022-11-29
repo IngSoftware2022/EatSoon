@@ -1,5 +1,7 @@
 <!-- modal carrito, pero mejor si es offcanvas -->
-<div class="modal fade" id="demo" >
+<?php
+?>
+<div class="modal fade" id="demo">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content bg-dark">
             <div class="modal-header">
@@ -18,32 +20,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>(imagen)Leche Pil</td>
-                            <td>cantidad</td>
-                            <td>- +</td>
-                            <td>total en carrito</td>
-                            <td><a href="#" class="bi bi-trash"></a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>(imagen)Mermelada del Valle</td>
-                            <td>cantidad</td>
-                            <td>- +</td>
-                            <td>total en carrito</td>
-                            <td><a href="#" class="bi bi-trash"></a></td>
-                        </tr>
-                        <tr>
-                        <th scope="row">3</th>
-                            <td>(imagen)atun Van Camps</td>
-                            <td>cantidad</td>
-                            <td>- +</td>
-                            <td>total en carrito</td>
-                            <td><a href="#" class="bi bi-trash"></a></td>
-                        </tr>
+                        <?php foreach ($enCarrito as $carito) : ?>
+                            <tr>
+                                <th scope="row"><?php echo ($carito['carrito_id']); ?></th>
+                                <td><img src="<?php echo RUTA . '/storage/' . $producto['imagen'] ?>" width="30" /> <?php echo ($carito['nombre_producto']); ?></td>
+                                <td><?php echo ($carito['cantidad']); ?></td>
+                                <td>
+                                    <form action="" method="post">
+                                        <button type="submit" style="color:white;background: goldenrod;">-</button>
+                                    </form>
+                                    <form action="" method="post">
+                                        <button type="submit" style="color:white;background: goldenrod;">+</button>
+                                    </form>
+                                </td>
+                                <td><?php echo ((int)$carito['cantidad'] * (float)$carito['precio_producto']); ?></td>
+                                <td>
+                                    <form action="" method="post">
+                                        <button type="submit" class="bi bi-trash"></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
-                </Table>                                   
+                </Table>
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <tr>
@@ -51,7 +50,7 @@
                     border-radius: 4px; color: white; font-weight: bold; text-align: center;">Vaciar Todo</button></td>
 
                     <p class="link-light">Total Productos: 3</p>
-                                                   
+
                     <p class="link-light">Total: (cantidad)Bs.</p>
 
                     <td><button type="button" class="btn btn-success link-light" data-bs-dismiss="modal" style="padding: .25rem 1rem;border-radius: 4px; color: white; font-weight: bold;
@@ -60,6 +59,6 @@
             </div>
         </div>
     </div>
-</div>  
-                                  
+</div>
+
 <!-- fin cuerpo modal -->

@@ -19,12 +19,12 @@ function getToken($length)
 {
     $token = "";
     $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
-    $codeAlphabet.= "0123456789";
+    $codeAlphabet .= "abcdefghijklmnopqrstuvwxyz";
+    $codeAlphabet .= "0123456789";
     $max = strlen($codeAlphabet); // edited
 
-    for ($i=0; $i < $length; $i++) {
-        $token .= $codeAlphabet[crypto_rand_secure(0, $max-1)];
+    for ($i = 0; $i < $length; $i++) {
+        $token .= $codeAlphabet[crypto_rand_secure(0, $max - 1)];
     }
 
     return $token;
@@ -32,31 +32,58 @@ function getToken($length)
 function agregarAlCarrito($con, $data)
 {
     if ($con && $data) {
+        $pro = $data['producto_id'];
+        $cod = $data['code'];
+        $query2 = $con->prepare("SELECT cantidad FROM carrito WHERE producto_id = '$pro' AND code='$cod'");
+        $query2->execute();
+        $existe = $query2->fetchAll();
+        if (count($existe) > 0) {
+            $carr = $con->prepare("UPDATE carrito SET cantidad = ? WHERE producto_id = ? AND code= ?");
+            $contar = $existe[0]['cantidad'] + 1;
+            /*array respetando el orden de cada valor*/
+            $arrParams = array($contar, $pro, $cod);
+            var_dump($arrParams);
+            /*Pasamos el array en el execute*/
+            if ($carr->execute($arrParams)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            $query = $con->prepare(
+                'INSERT INTO carrito (cantidad, producto_id, usuario_CI, code)
+                                VALUES (:cantidad, :producto_id, :usuario_CI, :code)'
+            );
 
-        $query = $con->prepare(
-            'INSERT INTO carrito (cantidad, producto_id, usuario_CI, code)
-                            VALUES (:cantidad, :producto_id, :usuario_CI, :code)'
-        );
-
-        try {
-            $query->execute([
-                ':cantidad' => 1,
-                ':producto_id' => $data['producto_id'],
-                ':usuario_CI' => $data['usuario_CI'],
-                ':code' => $data['code']
-            ]);
-            return true;
-        } catch (Exception $e) {
-            var_dump( $e->getMessage());
+            try {
+                $query->execute([
+                    ':cantidad' => 1,
+                    ':producto_id' => $data['producto_id'],
+                    ':usuario_CI' => $data['usuario_CI'],
+                    ':code' => $data['code']
+                ]);
+                return true;
+            } catch (Exception $e) {
+                var_dump($e->getMessage());
+            }
         }
         return false;
     } else {
         return false;
     }
 }
-function totalProductosEnCarrito($con, $data){
+function totalProductosEnCarrito($con, $data)
+{
     $code = $data["code"];
-    $query = $con->prepare("SELECT * FROM carrito WHERE code = '$code'");
+    $query = $con->prepare("SELECT SUM(cantidad) AS total FROM carrito  WHERE code = '$code'");
     $query->execute();
-    return count($query->fetchAll());
+    $row = $query->fetch(PDO::FETCH_ASSOC);
+    return $row['total'];
+}
+function enCarrito($con, $data)
+{
+    $code = $data["code"];
+    $query = $con->prepare("SELECT * FROM carrito JOIN producto ON (carrito.producto_id=producto.id_producto) WHERE code = '$code'");
+    $query->execute();
+    return $query->fetchAll();
 }
