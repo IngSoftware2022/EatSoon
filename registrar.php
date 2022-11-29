@@ -24,12 +24,14 @@
         $create = createProduct($con, $data, $folder_save, function($ruta, $file){ 
             return uploadFile($ruta, $file); //manipular archivo
         });
-
+        $message="";
         if(!$create){
-            echo "El producto ingresado ya existe";
+            $message= "El producto ingresado ya existe";
+        }else{
+            $message= "El producto registrado";
         }
 
-        header('Location: registrar.php');
+        header('Location: registrar.php?m='.$message);
     }
     
     
