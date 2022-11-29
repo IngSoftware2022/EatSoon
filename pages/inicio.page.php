@@ -85,12 +85,18 @@
                                 <span><?php echo $producto['precio_producto'];?>.Bs</span>
                             </div>
                             <div class="cta_tarjeta-rest">
-                                <button class="btn text-light" style="padding: .25rem 1rem;
+                                <form action="carrito.php" method="post">
+                                    <input type="hidden" name="page" value="<?php echo($_GET['page'])?>"/>
+                                    <input type="hidden" name="producto_id" value="<?php echo $producto['id_producto'];?>"/>
+                                    <button type="submit" class="btn text-light" style="padding: .25rem 1rem;
                                 border-radius: 4px;
                                 background-color: goldenrod;
                                 color: white;
                                 font-weight: bold;
-                                text-align: center;"> Añadir Carrito<button type="button" class="btn text-light " data-bs-toggle="modal" data-bs-target="#my<?php echo $producto['id_producto'];?>" style="padding: .25rem 1rem;
+                                width: 100%;
+                                text-align: center;"> Añadir al Carrito</button>
+                                </form>
+                                <button type="button" class="btn text-light " data-bs-toggle="modal" data-bs-target="#my<?php echo $producto['id_producto'];?>" style="padding: .25rem 1rem;
                                 border-radius: 4px;                              background-color: goldenrod;
                                 color: white;
                                 font-weight: bold;
@@ -128,19 +134,6 @@
                                 </div>
                             </div>                            
                             <!-- fin código modal -->
-
-                            <div class="cta_tarjeta-rest">
-                                <button class="btn text-light" style="padding: .25rem 1rem;
-                                border-radius: 4px;
-                                background-color: goldenrod;
-                                color: white;
-                                font-weight: bold;
-                                text-align: center;"> Añadir Carrito<button type="button" class="btn text-light " data-bs-toggle="modal" data-bs-target="#my<?php echo $producto['id_producto'];?>" style="padding: .25rem 1rem;
-                                border-radius: 4px;                              background-color: goldenrod;
-                                color: white;
-                                font-weight: bold;
-                                text-align: center;">Más Información </button>                           
-                            </div>ss
                             
                         </div>
                     </div>

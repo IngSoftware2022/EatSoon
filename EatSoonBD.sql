@@ -78,8 +78,29 @@ CREATE TABLE IF NOT EXISTS `eatsoon`.`pedido` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
+-- -----------------------------------------------------
+-- Table `eatsoon`.`carrito`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `eatsoon`.`carrito` (
+   `carrito_id` INT NOT NULL AUTO_INCREMENT,
+  `cantidad` INT NULL,
+  `producto_id` INT(11) NOT NULL,
+  `usuario_CI` INT(11)  NULL,
+  PRIMARY KEY (`carrito_id`),
+  INDEX `fk_carrito_producto_idx` (`producto_id` ASC) VISIBLE,
+  INDEX `fk_carrito_usuario1_idx` (`usuario_CI` ASC) VISIBLE,
+  CONSTRAINT `fk_carrito_producto`
+    FOREIGN KEY (`producto_id`)
+    REFERENCES `eatsoon`.`producto` (`id_producto`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_carrito_usuario1`
+    FOREIGN KEY (`usuario_CI`)
+    REFERENCES `eatsoon`.`usuario` (`CI`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+ALTER TABLE eatsoon.carrito ADD code varchar(100) NULL;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
