@@ -20,14 +20,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $data['code'] = $_COOKIE["usuario_anonimo"];
     }
+    switch ($_POST['action']) {
+        case 'agregar':
+            $create = agregarAlCarrito($con, $data);
+            $message = "";
+            if (!$create) {
+                $message = "Fallo al añadir a carrito";
+            } else {
+                $message = "Añadido al carrito";
+            }
+            break;
+        case 'delete':
+            $data['carrito_id'] = $_POST['carrito_id'];
+            $create = eliminarItem($con, $data);
+            $message = "";
+            if (!$create) {
+                $message = "Fallo al eliminar";
+            } else {
+                $message = "Añadido al carrito";
+            }
+            break;
+        case 'mas':
+            $data['carrito_id'] = $_POST['carrito_id'];
+            $create = aumentarItem($con, $data);
+            $message = "";
 
-    $create = agregarAlCarrito($con, $data);
-    $message = "";
-    if (!$create) {
-        $message = "Fallo al añadir a carrito";
-    } else {
-        $message = "Añadido al carrito";
+            break;
+        case 'menos':
+            $data['carrito_id'] = $_POST['carrito_id'];
+            $create = desminuirItem($con, $data);
+            break;
+        default:
+            # code...
+            break;
     }
+
     header('Location: index.php?page=' . $_POST['page'] . '&m=' . $message);
 }
 header('Location: index.php');

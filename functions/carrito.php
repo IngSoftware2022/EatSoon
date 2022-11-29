@@ -42,7 +42,6 @@ function agregarAlCarrito($con, $data)
             $contar = $existe[0]['cantidad'] + 1;
             /*array respetando el orden de cada valor*/
             $arrParams = array($contar, $pro, $cod);
-            var_dump($arrParams);
             /*Pasamos el array en el execute*/
             if ($carr->execute($arrParams)) {
                 return true;
@@ -86,4 +85,61 @@ function enCarrito($con, $data)
     $query = $con->prepare("SELECT * FROM carrito JOIN producto ON (carrito.producto_id=producto.id_producto) WHERE code = '$code'");
     $query->execute();
     return $query->fetchAll();
+}
+function eliminarItem($con, $data)
+{
+    if ($con && $data) {
+        $pro = $data['carrito_id'];
+        $cod = $data['code'];
+        $query = $con->prepare("DELETE FROM carrito WHERE carrito_id = '$pro' AND code='$cod'");
+        $query->execute();
+        return true;
+    }
+    return false;
+}
+function aumentarItem($con, $data)
+{
+    if ($con && $data) {
+        $pro = $data['carrito_id'];
+        $cod = $data['code'];
+        $query2 = $con->prepare("SELECT cantidad FROM carrito WHERE carrito_id = '$pro' AND code='$cod'");
+        $query2->execute();
+        $existe = $query2->fetchAll();
+        if (count($existe) > 0) {
+            $carr = $con->prepare("UPDATE carrito SET cantidad = ? WHERE carrito_id = ? AND code= ?");
+            $contar = $existe[0]['cantidad'] + 1;
+            /*array respetando el orden de cada valor*/
+            $arrParams = array($contar, $pro, $cod);
+            /*Pasamos el array en el execute*/
+            if ($carr->execute($arrParams)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    return false;
+}
+function desminuirItem($con, $data)
+{
+    if ($con && $data) {
+        $pro = $data['carrito_id'];
+        $cod = $data['code'];
+        $query2 = $con->prepare("SELECT cantidad FROM carrito WHERE carrito_id = '$pro' AND code='$cod'");
+        $query2->execute();
+        $existe = $query2->fetchAll();
+        if (count($existe) > 0) {
+            $carr = $con->prepare("UPDATE carrito SET cantidad = ? WHERE carrito_id = ? AND code= ?");
+            $contar = (int)$existe[0]['cantidad'] ? (int)$existe[0]['cantidad'] - 1 : 0;
+            /*array respetando el orden de cada valor*/
+            $arrParams = array($contar, $pro, $cod);
+            /*Pasamos el array en el execute*/
+            if ($carr->execute($arrParams)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    return false;
 }
