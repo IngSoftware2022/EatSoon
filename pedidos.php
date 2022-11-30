@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
 require './config/env.php';
 require './config/conexion.php';

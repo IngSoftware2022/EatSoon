@@ -30,14 +30,17 @@ $total=0;
                                     <div style="display: inline-flex;">
                                         <form action="carrito.php" method="post">
                                             <input type="hidden" name="action" value="menos" />
-                                            <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                                            <input type="hidden" name="page" value="<?php echo isset($_GET['page']) ? $_GET['page'] : 0 ?>" />
                                             <input type="hidden" name="carrito_id" value="<?php echo $carito['carrito_id']; ?>" />
+                                            <input type="hidden" name="producto_id" value="" />
+                                            
                                             <button type="submit" style="color:white;background: goldenrod;">-</button>
                                         </form>
                                         <form action="carrito.php" method="post">
                                             <input type="hidden" name="action" value="mas" />
-                                            <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                                            <input type="hidden" name="page" value="<?php echo isset($_GET['page']) ? $_GET['page'] : 0 ?>" />
                                             <input type="hidden" name="carrito_id" value="<?php echo $carito['carrito_id']; ?>" />
+                                            <input type="hidden" name="producto_id" value="" />
                                             <button type="submit" style="color:white;background: goldenrod;">+</button>
                                         </form>
                                     </div>
@@ -49,8 +52,9 @@ $total=0;
                                 <td>
                                     <form action="carrito.php" method="post">
                                         <input type="hidden" name="action" value="delete" />
-                                        <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                                        <input type="hidden" name="page" value="<?php echo isset($_GET['page']) ? $_GET['page'] : 0 ?>" />
                                         <input type="hidden" name="carrito_id" value="<?php echo $carito['carrito_id']; ?>" />
+                                        <input type="hidden" name="producto_id" value="" />
                                         <button type="submit" class="bi bi-trash"></button>
                                     </form>
                                 </td>
@@ -64,7 +68,8 @@ $total=0;
                     <td>
                     <form action="carrito.php" method="post">
                         <input type="hidden" name="action" value="vaciar" />
-                        <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                        <input type="hidden" name="page" value="<?php echo isset($_GET['page']) ? $_GET['page'] : 0 ?>" />
+                        <input type="hidden" name="producto_id" value="" />
                         <button type="submit" class="btn btn-danger link-light" data-bs-dismiss="modal" style="padding: .25rem 1rem;
                     border-radius: 4px; color: white; font-weight: bold; text-align: center;">Vaciar Todo</button>
                     </form>
@@ -77,7 +82,8 @@ $total=0;
                     <td>
                     <form action="carrito.php" method="post">
                         <input type="hidden" name="action" value="comprar" />
-                        <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                        <input type="hidden" name="page" value="<?php echo isset($_GET['page']) ? $_GET['page'] : 0 ?>" />
+                        <input type="hidden" name="producto_id" value="" />
                         <button type="submit" class="btn btn-success link-light" data-bs-dismiss="modal" style="padding: .25rem 1rem;border-radius: 4px; color: white; font-weight: bold;
                     text-align: center;">Comprar</button>
                     </form>

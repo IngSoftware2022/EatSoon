@@ -19,11 +19,9 @@
                 ':pass' => $data['password']
             ]);
 
-// Para direccionar automaticamente al inicio despues de crear una cuenta
+        // Para direccionar automaticamente al inicio despues de crear una cuenta
           header("Location: index_usuario_creado.php");
               die();
-
-
             return true;
     }else{
         return false;
@@ -54,11 +52,14 @@
         $login =Existe_Usuario($con, $data);
         if(count($login)==1) {
             //codigo para loguearse
-            header('Location: index_usuario_creado.php');
             setcookie("user",$login[0]["CORREO"]);
+            // header('Location: index_usuario_creado.php');
+            $_SESSION['user'] = $data['correo'];
+            echo "<script> window.location.href='index.php' </script>";
         }else{
             $error = "Correo o contrseña incorrecto";
-            header('Location: login.php?error='.$error);
+            // header('Location: login.php?error='.$error);
+            echo "<script> window.location.href='login.php?=".$error."' </script>";
         }
     }
     function logout(){

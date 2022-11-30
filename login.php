@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 
     require './config/env.php';
     require './config/conexion.php';
@@ -6,6 +6,10 @@
     require './functions/file.php';
 
     $con = conexion($db_config);
+
+    if(isset($_SESSION['user'])){
+        echo "<script> window.location.href='index.php' </script>";
+    }
 
     /** Verificar si se envio por el metodo POST */
     if($_SERVER['REQUEST_METHOD'] == 'POST'){    

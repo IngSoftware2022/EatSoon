@@ -63,13 +63,11 @@
             <?php
             //$cantProducto = $productos->num_rows;
             ?>
-            <?php foreach ($productos as $producto) :
-                //for($i=0;$i<2;$i++){
-            ?>
+            <?php foreach ($productos as $producto) : ?>
 
                 <div class="tarjeta-rest" style="background: url(<?php echo RUTA . '/storage/' . $producto['imagen'] ?>) center; background-size: cover;">
                     <div class="wrap-text_tarjeta-rest">
-                        <h2><?php echo $producto['nombre_producto']; ?></h2>
+                        <h2><?php echo $producto['nombre_producto'] ?></h2>
                         <div class="cta-wrap_tarjeta-rest">
                             <div class="container__fechas">
                                 <span><span style="font-weight:bold;">pub:</span><?php echo $producto['fecha_publicacion']; ?></span>
@@ -86,15 +84,15 @@
                             <div class="cta_tarjeta-rest">
                                 <form action="carrito.php" method="post">
                                     <input type="hidden" name="action" value="agregar" />
-                                    <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                                    <input type="hidden" name="page" value="<?php echo isset($_GET['page']) ? $_GET['page'] : 0 ?>" />
                                     <input type="hidden" name="producto_id" value="<?php echo $producto['id_producto']; ?>" />
                                     <button type="submit" class="btn text-light" style="padding: .25rem 1rem;
-                                border-radius: 4px;
-                                background-color: goldenrod;
-                                color: white;
-                                font-weight: bold;
-                                width: 100%;
-                                text-align: center;"> Añadir al Carrito</button>
+                                    border-radius: 4px;
+                                    background-color: goldenrod;
+                                    color: white;
+                                    font-weight: bold;
+                                    width: 100%;
+                                    text-align: center;"> Añadir al Carrito</button>
                                 </form>
                                 <button type="button" class="btn text-light " data-bs-toggle="modal" data-bs-target="#my<?php echo $producto['id_producto']; ?>" style="padding: .25rem 1rem;
                                 border-radius: 4px;                              background-color: goldenrod;

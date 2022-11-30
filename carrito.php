@@ -6,7 +6,6 @@ require './functions/carrito.php';
 
 $con = conexion($db_config);
 
-
 /** Verificar si se envio por el metodo POST */
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $data = [
@@ -49,8 +48,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         case 'menos':
             $data['carrito_id'] = $_POST['carrito_id'];
             $create = desminuirItem($con, $data);
+            $message = "";
             break;
         case 'vaciar':
+            $message = "";
             $create = vaciarItem($con, $data);
             break;
         case 'comprar':

@@ -6,6 +6,8 @@ require './functions/product.php';
 require './functions/carrito.php';
 
 
+$con = conexion($db_config);
+
 $title = "Historial"; // Nombre del title
 
 $enCarrito = [];

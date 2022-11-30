@@ -1,11 +1,9 @@
-<?php
+<?php session_start();
 
 require './config/env.php';
 require './config/conexion.php';
 require './functions/product.php';
 require './functions/carrito.php';
-
-
 
 
 $con = conexion($db_config);
@@ -40,6 +38,7 @@ if (isset($_COOKIE["usuario_anonimo"])) {
     $contadorCarrito = totalProductosEnCarrito($con, ['code' => $_COOKIE["usuario_anonimo"]]);
     $enCarrito = enCarrito($con, ['code' => $_COOKIE["usuario_anonimo"]]);
 }
+
 
 $title = "Inicio Pagina"; // Nombre del title
 
