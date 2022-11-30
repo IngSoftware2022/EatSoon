@@ -1,13 +1,13 @@
 <?php
-    /** URL raiz del proyecto */    
-    define('RUTA', 'http://127.0.0.1:5200');
+    
+/** URL raiz del proyecto */
+define('RUTA', 'https://eatsoon-production-f08f.up.railway.app');
 
-    $db_config = [
-        'db_user' => 'root',
-        'db_pass' => 'isaias',
-        'db_name' => 'eatsoon',
-        'db_host' => 'database-mdb',
-        'db_port' => '3306'
-    ];
-    $proPage = 12;
-?>
+$db_config = [
+    'db_user' => 'root',
+    'db_pass' => 'xumWSCdMvdvlqpIzLGae',
+    'db_name' => 'railway',
+    'db_host' => 'containers-us-west-99.railway.app',
+    'db_port' => '6636'
+];
+$proPage = 12;
