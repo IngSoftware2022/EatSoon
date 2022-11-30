@@ -47,16 +47,22 @@
         $contraseña = $data["password"];
         $query = $con->prepare("SELECT * FROM usuario WHERE correo = '$nombre' AND contraseña = '$contraseña' LIMIT 1");
         $query->execute();
-        return count($query->fetchAll()) == 1;
+        return $query->fetchAll();
     }
 
     function loginUser($con, $data){
-        if(Existe_Usuario($con, $data)){
+        $login =Existe_Usuario($con, $data);
+        if(count($login)==1) {
             //codigo para loguearse
             header('Location: index_usuario_creado.php');
+            setcookie("user",$login[0]["CORREO"]);
         }else{
             $error = "Correo o contrseña incorrecto";
             header('Location: login.php?error='.$error);
         }
+    }
+    function logout(){
+        setcookie("user", "", time() - 3600, '/');
+        unset ($_COOKIE['user']);
     }
 ?>
