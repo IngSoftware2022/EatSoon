@@ -48,9 +48,9 @@
 
 
                         
-                        <li class="menu-item">
-                            <a class="bi bi-cart-fill" style="font-size: 1.5rem; color: white; padding: 0 20px;"  data-bs-toggle="modal" data-bs-target="#demo">0</a>
-                        </li>
+                    <li class="menu-item">
+                                <a class="bi bi-cart-fill" style="font-size: 1.5rem; color: white; padding: 0 20px;" data-bs-toggle="modal" data-bs-target="#demo"> <span style="border-radius: 50%;width: 22px;height: 22px;padding: 3px;text-align: center;vertical-align: middle;font-size: 12px; background-color: red;position: absolute;color: aliceblue;"><?php echo  $contadorCarrito ? $contadorCarrito : 0; ?></span></a>
+                            </li>
 
                         <li class="menu-item">
                             <i class="bi bi-clipboard-plus-fill" style="font-size: 1.5rem; color: white;"></i>
