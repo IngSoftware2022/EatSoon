@@ -35,7 +35,7 @@ if (isset($_COOKIE["usuario_anonimo"])) {
     $contadorCarrito = totalProductosEnCarrito($con, ['code' => $_COOKIE["usuario_anonimo"]]);
     $enCarrito = enCarrito($con, ['code' => $_COOKIE["usuario_anonimo"]]);
 }
-
+$pedidos = mostrarPedido($con);
 $title = "Inicio Pagina"; // Nombre del title
 
 $page = './pages/pedido.page.php'; // Nombre y ruta de la pagina

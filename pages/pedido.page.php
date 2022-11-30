@@ -19,55 +19,9 @@
             <div class="row ">
                 <h1 class="mb-5 mt-5 text-white">Lista de solicitud de pedidos</h1>
                 <div>
-                    <div class="card mb-4" style="background-color: #f8b318;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #382804;">
-                        <table>
-                            <tr>
-                                <th>
-                                    <h5>Pedido</h5>
-                                </th>
-                                <th>
-                                    <h5>#0000</h5>
-                                </th>
-                                <th>
-                                    <h5>Usuario:</h5>
-                                </th>
-                                <th>
-                                    <h5></h5>
-                                </th>
-                                <th>
-                                    <h5>Fecha:</h5>
-                                </th>
-                                <th>
-                                    <h5></h5>
-                                </th>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="card mb-4" style="background-color: #f8b318;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #382804;">
-                        <table>
-                            <tr>
-                                <th>
-                                    <h5>Pedido</h5>
-                                </th>
-                                <th>
-                                    <h5>#0000</h5>
-                                </th>
-                                <th>
-                                    <h5>Usuario:</h5>
-                                </th>
-                                <th>
-                                    <h5></h5>
-                                </th>
-                                <th>
-                                    <h5>Fecha:</h5>
-                                </th>
-                                <th>
-                                    <h5></h5>
-                                </th>
-                            </tr>
-                        </table>
-                    </div>
-                    <a data-bs-toggle="modal" data-bs-target="#pedido1">
+                
+                <?php foreach ($pedidos as $pedido) : ?>
+                    <a data-bs-toggle="modal" data-bs-target="#pedido<?php echo($pedido['codPedido']);?>">
                         <div class="card mb-4" style="background-color: #f8b318;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #382804;">
                             <table>
                                 <tr>
@@ -75,16 +29,16 @@
                                         <h5>Pedido</h5>
                                     </th>
                                     <th>
-                                        <h5>#0000</h5>
+                                        <h5>#<?php echo($pedido['codPedido']);?></h5>
                                     </th>
                                     <th>
-                                        <h5>Usuario:</h5>
+                                        <h5>Usuario:<?php echo($pedido['usuario_CI']);?></h5>
                                     </th>
                                     <th>
                                         <h5></h5>
                                     </th>
                                     <th>
-                                        <h5>Fecha:</h5>
+                                        <h5>Fecha:<?php echo($pedido['fecha_Pedido']);?></h5>
                                     </th>
                                     <th>
                                         <h5></h5>
@@ -95,11 +49,8 @@
                     </a>
 
                     <!-- código modal -->
-                    <div class="modal fade" id="pedido1">
-                        <div class="modal-dialog modal-lg" style="    transform: translate(0, 100%);
-    min-height: 15rem;
-    min-width: 71%;
-    margin: auto;">
+                    <div class="modal fade" id="pedido<?php echo($pedido['codPedido']);?>">
+                        <div class="modal-dialog modal-lg" style="    transform: translate(0, 100%);min-height: 15rem; min-width: 71%; margin: auto;">
                             <div class="modal-content bg-dark">
                                 <div class="modal-body">
                                     <div class="row justify-content-center text-white">
@@ -107,9 +58,9 @@
                                         <div class="col-5">
                                         <div class="row justify-content-center">
                                                 <div class="col-8">
-                                                    <div><h5>Pedido #0000</h5></div>
-                                                    <div><h5>Usuario:</h5></div>
-                                                    <div><h5>Fecha:</h5></div>
+                                                    <div><h5>Pedido #<?php echo($pedido['codPedido']);?></h5></div>
+                                                    <div><h5>Usuario:<?php echo($pedido['usuario_CI']);?></h5></div>
+                                                    <div><h5>Fecha: <em><?php echo($pedido['fecha_Pedido']);?></em></h5></div>
                                                     <img src="<?= RUTA ?>/assets/img/bien amarillo.jpeg" width="100" alt="">
                                                 </div>
                                         </div>
@@ -117,66 +68,44 @@
                                         <div class="col-7">
                                             <div class="row justify-content-center">
                                                 <div class="col-8">
-                                                    <table>
+                                                    <table class="table">
                                                         <tr>
-                                                            <th class="ml-2 mr-2">
+                                                            <th class="table-dark">
                                                                 <h4><b>Item</b></h4>
                                                             </th>
-                                                            <th class="ml-2 mr-2">
+                                                            <th class="table-dark">
                                                                 <h4><b>Cantidad</b></h4>
                                                             </th>
-                                                            <th class="ml-2 mr-2">
+                                                            <th class="table-dark">
                                                                 <h4><b>Total</b></h4>
                                                             </th>
                                                         </tr>
                                                         <tbody>
                                                             <tr>
-                                                                <td class="ml-2 mr-2">
-                                                                    <h5>Leche</h5>
+                                                                <td class="table-dark" >
+                                                                    <h5><?php echo($pedido['nombre_producto']);?></h5>
                                                                 </td>
-                                                                <td class="ml-2 mr-2 text-center">
-                                                                    <h5>3</h5>
+                                                                <td class="table-dark text-center">
+                                                                    <h5><?php echo($pedido['tatal_Pedido']);?></h5>
                                                                 </td>
-                                                                <td class="ml-2 mr-2">
-                                                                    <h5>15 Bs</h5>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="ml-2 mr-2">
-                                                                    <h5>Pan</h5>
-                                                                </td>
-                                                                <td class="ml-2 mr-2 text-center">
-                                                                    <h5>3</h5>
-                                                                </td>
-                                                                <td class="ml-2 mr-2">
-                                                                    <h5>15 Bs</h5>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="ml-2 mr-2">
-                                                                    <h5>Sopa</h5>
-                                                                </td>
-                                                                <td class="ml-2 mr-2 text-center">
-                                                                    <h5>3</h5>
-                                                                </td>
-                                                                <td class="ml-2 mr-2">
-                                                                    <h5>15 Bs</h5>
+                                                                <td class="table-dark">
+                                                                    <h5><?php echo($pedido['precio_producto']);?></h5>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
                                                     <hr>
                                                     <div>
-                                                        <table>
+                                                        <table class="table">
                                                             <tr>
-                                                                <th>
+                                                                <th class="table-dark">
                                                                     <h5>Total productos:</h5>
                                                                 </th>
-                                                                <th>
-                                                                    <h5>9</h5>
+                                                                <th class="table-dark text-left">
+                                                                    <h5><?php echo($pedido['tatal_Pedido']);?></h5>
                                                                 </th>
-                                                                <th>
-                                                                    <h5>45 Bs</h5>
+                                                                <th class="table-dark">
+                                                                    <h5><?php echo((int)$pedido['tatal_Pedido'] * floatval($pedido['precio_producto']));?> Bs</h5>
                                                                 </th>
                                                             </tr>
                                                         </table>
@@ -190,6 +119,7 @@
                         </div>
                     </div>
                     <!-- fin código modal -->
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
