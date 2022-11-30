@@ -154,3 +154,15 @@ function desminuirItem($con, $data)
     }
     return false;
 }
+function vaciarItem($con, $data){
+    if ($con && $data) {
+        $cod = $data['code'];
+        $query = $con->prepare("DELETE FROM carrito WHERE code='$cod'");
+        $query->execute();
+        return true;
+    }
+    return false;
+}
+function comprarItem($con, $data){
+
+}

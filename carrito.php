@@ -50,6 +50,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data['carrito_id'] = $_POST['carrito_id'];
             $create = desminuirItem($con, $data);
             break;
+        case 'vaciar':
+            $create = vaciarItem($con, $data);
+            break;
+        case 'comprar':
+            $create = comprarItem($con, $data);
+            break;
         default:
             # code...
             break;

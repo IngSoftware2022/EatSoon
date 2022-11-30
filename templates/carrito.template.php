@@ -1,5 +1,6 @@
 <!-- modal carrito, pero mejor si es offcanvas -->
 <?php
+$total=0;
 ?>
 <div class="modal fade" id="demo">
     <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -41,7 +42,10 @@
                                         </form>
                                     </div>
                                 </td>
-                                <td><?php echo ((int)$carito['cantidad'] * (float)$carito['precio_producto']); ?></td>
+                                <td><?php 
+                                $parcial= ((int)$carito['cantidad'] * (float)$carito['precio_producto']);
+                                $total= $total + $parcial;
+                                echo ($parcial); ?></td>
                                 <td>
                                     <form action="carrito.php" method="post">
                                         <input type="hidden" name="action" value="delete" />
@@ -57,15 +61,27 @@
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <tr>
-                    <td><button type="button" class="btn btn-danger link-light" data-bs-dismiss="modal" style="padding: .25rem 1rem;
-                    border-radius: 4px; color: white; font-weight: bold; text-align: center;">Vaciar Todo</button></td>
+                    <td>
+                    <form action="carrito.php" method="post">
+                        <input type="hidden" name="action" value="vaciar" />
+                        <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                        <button type="submit" class="btn btn-danger link-light" data-bs-dismiss="modal" style="padding: .25rem 1rem;
+                    border-radius: 4px; color: white; font-weight: bold; text-align: center;">Vaciar Todo</button>
+                    </form>
+                    </td>
 
-                    <p class="link-light">Total Productos: 3</p>
+                    <p class="link-light">Total Productos: <?php echo($contadorCarrito?$contadorCarrito:0) ?></p>
 
-                    <p class="link-light">Total: (cantidad)Bs.</p>
+                    <p class="link-light">Total: <?php echo($total) ?> Bs.</p>
 
-                    <td><button type="button" class="btn btn-success link-light" data-bs-dismiss="modal" style="padding: .25rem 1rem;border-radius: 4px; color: white; font-weight: bold;
-                    text-align: center;">Comprar</button></td>
+                    <td>
+                    <form action="carrito.php" method="post">
+                        <input type="hidden" name="action" value="comprar" />
+                        <input type="hidden" name="page" value="<?php echo ($_GET['page']) ?>" />
+                        <button type="submit" class="btn btn-success link-light" data-bs-dismiss="modal" style="padding: .25rem 1rem;border-radius: 4px; color: white; font-weight: bold;
+                    text-align: center;">Comprar</button>
+                    </form>
+                    </td>
                 </tr>
             </div>
         </div>
