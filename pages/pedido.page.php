@@ -120,13 +120,13 @@
                                                     <table>
                                                         <tr>
                                                             <th class="ml-2 mr-2">
-                                                                <h5>Item</h5>
+                                                                <h4><b>Item</b></h4>
                                                             </th>
                                                             <th class="ml-2 mr-2">
-                                                                <h5>Cantidad</h5>
+                                                                <h4><b>Cantidad</b></h4>
                                                             </th>
                                                             <th class="ml-2 mr-2">
-                                                                <h5>Total</h5>
+                                                                <h4><b>Total</b></h4>
                                                             </th>
                                                         </tr>
                                                         <tbody>
