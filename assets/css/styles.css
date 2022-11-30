@@ -10,6 +10,8 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100%;
+    background-position: center center;
+    background-size: cover;
 }
 
 a {
@@ -47,6 +49,7 @@ li {
     z-index: 99;
     margin: 0;
     padding: 0;
+    align-items: center;
     justify-content: space-between;
     font-size: 1.1rem;
 }
@@ -64,6 +67,11 @@ li.menu-item a {
 
 li.menu-item a:hover {
     color: goldenrod;
+}
+
+/* icon img */
+.main-menu .icon-historial-img{
+	width: 2em;
 }
 
 .nav__label,
@@ -314,3 +322,80 @@ li.menu-item a:hover {
     margin-left: 50px;
 
 }
+
+
+
+
+/* -- histori page -- */
+.content-history{
+    width: 95%;
+    margin: auto;
+    max-width: 1200px;
+}
+
+.content-history .item-history{
+    display: flex;
+    margin: auto;
+    background-color: #F7B231;
+    padding: 2em 1em;
+    margin-top: 2em;
+}
+
+.content-history .item-history--block{
+    width: 50%;
+    color: #363D46;
+}
+
+
+.content-history--card {
+    display: flex;
+    padding: 1em 6em 4em 6em;
+    justify-content: space-around;
+    background-color: #4C5766;
+}
+
+
+.content-history--aside img {
+    width: 10em;
+}
+
+.content-history--title {
+    color: white;
+}
+
+.content-history--information table tr th,
+.content-history--information table tr td{
+    font-size: 2.6em;
+    padding: 0.2em;
+    text-align: center;
+    color: white;
+}
+
+.content-history--information table tr:last-child {
+    border-top: solid 0.1em white;
+}
+
+.content-history--information table tr td{
+    font-size: 2em;
+    font-weight: 500;
+    padding-bottom: 1em;
+}
+
+.content-history--aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content-history--aside-title h2{
+    color: white;
+}
+
+/* .content-history--aside {
+    width: 50%;
+}
+
+
+.content-history--information {
+    width: 50%;
+} */
