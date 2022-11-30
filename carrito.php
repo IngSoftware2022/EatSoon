@@ -55,12 +55,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
         case 'comprar':
             $create = comprarItem($con, $data);
+            if (!$create) {
+                $message = "Tienes que iniciar session para continuar la su pedido";
+                header('Location: crear.php?page=' . $_POST['page'] . '&m=' . $message);
+                exit;
+            }
             break;
         default:
             # code...
             break;
     }
-
     header('Location: index.php?page=' . $_POST['page'] . '&m=' . $message);
+    exit;
 }
 header('Location: index.php');
+exit;

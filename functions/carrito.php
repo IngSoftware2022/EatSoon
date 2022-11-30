@@ -164,5 +164,47 @@ function vaciarItem($con, $data){
     return false;
 }
 function comprarItem($con, $data){
+    if ($con && $data) {
+        if(isset($_COOKIE['user'])){
+            $email = $_COOKIE['user'];
+            $usuario = $con->prepare("SELECT * FROM usuario WHERE correo = '$email' LIMIT 1");
+            $usuario->execute();
+            $user = $usuario->fetch(PDO::FETCH_ASSOC);
 
+            $code = $data["code"];
+            $query = $con->prepare("SELECT * FROM carrito  WHERE code = '$code'");
+            $query->execute();
+            $row = $query->fetchAll();
+            if (count($row)>0) {               
+                foreach ($row as $key => $value) {
+                    
+                    $query2 = $con->prepare(
+                        'INSERT INTO pedido (
+                            codPedido,
+                            producto_id_producto,
+                            usuario_CI,
+                            tatal_Pedido,
+                            fecha_Pedido)
+                        VALUES (null, :producto_id_producto, :usuario_CI, :tatal_Pedido, :fecha_Pedido)'
+                    );
+                    try {
+                        $res= $query2->execute([
+                        ':producto_id_producto'=>$value['producto_id'],
+                        ':usuario_CI'=>$user['CI'],
+                        ':tatal_Pedido'=>$value['cantidad'],
+                        ':fecha_Pedido'=>date('y-m-d H:i:s')
+                        ]);
+                    } catch (Exception $e) {
+                       var_dump($e->getMessage());
+                    }
+                }
+                $query3 = $con->prepare("DELETE FROM carrito WHERE code='$code'");
+                $query3->execute();
+            }
+            return true;
+        }else{
+            return false;
+        }
+    }
+    return false;
 }
