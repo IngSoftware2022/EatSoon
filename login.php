@@ -27,7 +27,9 @@ if (!$_SESSION){
             {
                 ob_end_clean();
             }
-            header( "Location: $url" );
+            //header( "Location: $url" );
+            echo "<script>window.location = '$url'</script>";
+            exit();
         }
     }
     
