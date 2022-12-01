@@ -1,6 +1,6 @@
 <?php
-
-    require './config/env.php';
+error_reporting(E_ALL ^ E_NOTICE);
+require './config/env.php';
     require './config/conexion.php';
     require './functions/loginf.php';
     require './functions/file.php';

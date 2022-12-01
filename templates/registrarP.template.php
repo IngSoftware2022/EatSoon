@@ -62,8 +62,8 @@
 
         <script src="<?=RUTA?>/assets/js/main.js"></script>
     <script src="<?=RUTA?>/assets/js/bootstrap/bootstrap.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="<?=RUTA?>/assets/js/Alerts2.js"></script>  <!--Conecta el js-->
+<!--    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
+<!--    <script src="--><?//=RUTA?><!--/assets/js/Alerts2.js"></script>  -->
 
 </body>
 </html>

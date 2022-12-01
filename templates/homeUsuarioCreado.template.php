@@ -85,8 +85,8 @@
 
 <script src="<?=RUTA?>/assets/js/paginacion.js"></script>        
 <script src="<?=RUTA?>/assets/js/bootstrap/bootstrap.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script src="<?=RUTA?>/assets/js/Alerts.js"></script>  <!--Conecta el js-->
+<!--<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
+<!--<script src="--><?//=RUTA?><!--/assets/js/Alerts.js"></script> -->
 <script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
 <script>
     document.querySelector('.mini-photo-wrapper').addEventListener('click', function() {
