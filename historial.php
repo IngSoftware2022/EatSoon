@@ -10,7 +10,6 @@ if (!$_SESSION){
 }
 
 $title = "Historial"; // Nombre del title
-
 $enCarrito = [];
 $contadorCarrito = 0;
 if ($_SESSION['usuario_anonimo']!=null) {

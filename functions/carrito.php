@@ -74,10 +74,18 @@ function agregarAlCarrito($con, $data)
 function totalProductosEnCarrito($con, $data)
 {
     $code = $data["code"];
-    $query = $con->prepare("SELECT SUM(cantidad) AS total FROM carrito  WHERE code = '$code'");
-    $query->execute();
-    $row = $query->fetch(PDO::FETCH_ASSOC);
-    return $row['total'];
+    if ($con && $data) {
+        try {
+
+            $query = $con->prepare("SELECT SUM(cantidad) AS total FROM carrito  WHERE code = '$code'");
+            $query->execute();
+            $row = $query->fetch(PDO::FETCH_ASSOC);
+            return $row['total'];
+        } catch (Exception $e) {
+            var_dump($e->getMessage());
+        }
+    }
+    return 0;
 }
 function enCarrito($con, $data)
 {
