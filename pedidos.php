@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
+require './functions/session.php';
 require './config/env.php';
 require './config/conexion.php';
 require './functions/pedido.php';
@@ -31,9 +32,9 @@ redireccionar($productos,RUTA);
 $numPaginas = getCantPaginas($con,$actual,$proPage);
 $enCarrito = [];
 $contadorCarrito = 0;
-if (isset($_COOKIE["usuario_anonimo"])) {
-    $contadorCarrito = totalProductosEnCarrito($con, ['code' => $_COOKIE["usuario_anonimo"]]);
-    $enCarrito = enCarrito($con, ['code' => $_COOKIE["usuario_anonimo"]]);
+if ($_SESSION['usuario_anonimo']!=null) {
+    $contadorCarrito = totalProductosEnCarrito($con, ['code' => session__get("usuario_anonimo")]);
+    $enCarrito = enCarrito($con, ['code' => session__get("usuario_anonimo")]);
 }
 $pedidos = mostrarPedido($con);
 $title = "Inicio Pagina"; // Nombre del title
@@ -41,3 +42,5 @@ $title = "Inicio Pagina"; // Nombre del title
 $page = './pages/pedido.page.php'; // Nombre y ruta de la pagina
 require './templates/pedido.template.php';
 require './templates/carrito.template.php';
+exit();
+?>

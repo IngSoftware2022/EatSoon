@@ -54,15 +54,13 @@
         $login =Existe_Usuario($con, $data);
         if(count($login)==1) {
             //codigo para loguearse
-            header('Location: index_usuario_creado.php');
-            setcookie("user",$login[0]["CORREO"]);
+            //header('Location: index_usuario_creado.php');
+            //setcookie("user",$login[0]["CORREO"]);
+            return $login[0];
         }else{
             $error = "Correo o contrseña incorrecto";
-            header('Location: login.php?error='.$error);
+            //header('Location: login.php?error='.$error);
         }
-    }
-    function logout(){
-        setcookie("user", "", time() - 3600, '/');
-        unset ($_COOKIE['user']);
+        return null;
     }
 ?>

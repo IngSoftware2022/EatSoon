@@ -103,6 +103,14 @@ ENGINE = InnoDB;
 ALTER TABLE eatsoon.carrito ADD code varchar(100) NULL;
 ALTER TABLE eatsoon.pedido MODIFY COLUMN codPedido int auto_increment NOT NULL;
 ALTER TABLE eatsoon.pedido MODIFY COLUMN fecha_Pedido DATETIME NOT NULL;
+-- -----------------------------------------------------
+-- Table `eatsoon`.`visita`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `eatsoon`.`visita` (
+   `visita_id` INT NOT NULL,
+  `token` CHARACTER NULL,
+  `user` CHARACTER NOT NULL)
+ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

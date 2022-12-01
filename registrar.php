@@ -1,5 +1,6 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
+require './functions/session.php';
 require './config/env.php';
     require './config/conexion.php';
     require './functions/product.php';
@@ -39,5 +40,5 @@ require './config/env.php';
 
     $page = './pages/registro.page.php';  // Nombre y ruta de la pagina
     require './templates/registrarP.template.php'; // Require template
-
+exit();
 ?>

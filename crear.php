@@ -38,4 +38,5 @@ require './config/env.php';
 
     $page = './pages/crearCuenta.pages.php';  // Nombre y ruta de la pagina
     require './templates/crearC.template.php'; // Require template
+exit();
 ?>

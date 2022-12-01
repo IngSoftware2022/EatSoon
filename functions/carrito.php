@@ -165,8 +165,8 @@ function vaciarItem($con, $data){
 }
 function comprarItem($con, $data){
     if ($con && $data) {
-        if(isset($_COOKIE['user'])){
-            $email = $_COOKIE['user'];
+        if($_SESSION['user']!=null){
+            $email = session__get("usuario_anonimo");
             $usuario = $con->prepare("SELECT * FROM usuario WHERE correo = '$email' LIMIT 1");
             $usuario->execute();
             $user = $usuario->fetch(PDO::FETCH_ASSOC);
