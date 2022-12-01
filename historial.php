@@ -8,13 +8,12 @@ require './functions/carrito.php';
 if (!$_SESSION){
     iniSesion();
 }
-
 $title = "Historial"; // Nombre del title
 $enCarrito = [];
 $contadorCarrito = 0;
 if ($_SESSION['usuario_anonimo']!=null) {
-    $contadorCarrito = totalProductosEnCarrito($con, ['code' => session__get("usuario_anonimo")]);
-    $enCarrito = enCarrito($con, ['code' => session__get("usuario_anonimo")]);
+   $contadorCarrito = totalProductosEnCarrito($con, ['code' => session__get("usuario_anonimo")]);
+   $enCarrito = enCarrito($con, ['code' => session__get("usuario_anonimo")]);
 }
 $header='./templates/header.template.php';
 $page = './pages/historial-compras.page.php'; // Nombre y ruta de la pagina
