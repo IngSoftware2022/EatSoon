@@ -73,8 +73,8 @@ function agregarAlCarrito($con, $data)
 }
 function totalProductosEnCarrito($con, $data)
 {
-    $code = $data["code"];
     if ($con && $data) {
+        $code = $data["code"];
         try {
 
             $query = $con->prepare("SELECT SUM(cantidad) AS total FROM carrito  WHERE code = '$code'");
@@ -174,7 +174,7 @@ function vaciarItem($con, $data){
 function comprarItem($con, $data){
     if ($con && $data) {
         if($_SESSION['user']!=null){
-            $email = session__get("usuario_anonimo");
+            $email = session__get("user");
             $usuario = $con->prepare("SELECT * FROM usuario WHERE correo = '$email' LIMIT 1");
             $usuario->execute();
             $user = $usuario->fetch(PDO::FETCH_ASSOC);
