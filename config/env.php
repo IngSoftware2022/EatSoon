@@ -1,5 +1,5 @@
 <?php
-    
+session_start();   
 /** URL raiz del proyecto */
 define('RUTA', 'https://eatsoon-production-1bf3.up.railway.app');
 
