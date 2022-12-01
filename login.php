@@ -5,7 +5,9 @@ error_reporting(E_ALL ^ E_NOTICE);
     require './config/conexion.php';
     require './functions/loginf.php';
     require './functions/file.php';
-
+if (!$_SESSION){
+    iniSesion();
+}
     $con = conexion($db_config);
 
     /** Verificar si se envio por el metodo POST */

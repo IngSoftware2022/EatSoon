@@ -5,7 +5,9 @@ require './config/env.php';
     require './config/conexion.php';
     require './functions/product.php';
     require './functions/file.php';
-
+if (!$_SESSION){
+    iniSesion();
+}
     $con = conexion($db_config);
     
 

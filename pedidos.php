@@ -6,7 +6,9 @@ require './config/conexion.php';
 require './functions/pedido.php';
 require './functions/product.php';
 require './functions/carrito.php';
-
+if (!$_SESSION){
+    iniSesion();
+}
 
 
 $con = conexion($db_config);
@@ -38,7 +40,7 @@ if ($_SESSION['usuario_anonimo']!=null) {
 }
 $pedidos = mostrarPedido($con);
 $title = "Inicio Pagina"; // Nombre del title
-
+$header='./templates/header.template.php';
 $page = './pages/pedido.page.php'; // Nombre y ruta de la pagina
 require './templates/pedido.template.php';
 require './templates/carrito.template.php';

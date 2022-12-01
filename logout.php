@@ -2,6 +2,10 @@
 error_reporting(E_ALL ^ E_NOTICE);
 require './functions/session.php';
 require './config/env.php';
+if (!$_SESSION){
+    iniSesion();
+}
+
 if (isset($_SESSION) && session__get("user")){
     destruirSesion();
 }

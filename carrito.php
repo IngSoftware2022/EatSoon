@@ -4,7 +4,9 @@ require './functions/session.php';
 require './config/env.php';
 require './config/conexion.php';
 require './functions/carrito.php';
-
+if (!$_SESSION){
+    iniSesion();
+}
 $con = conexion($db_config);
 
 

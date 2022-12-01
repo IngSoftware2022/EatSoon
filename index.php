@@ -6,7 +6,9 @@ require './config/conexion.php';
 require './functions/product.php';
 require './functions/carrito.php';
 
-
+if (!$_SESSION){
+    iniSesion();
+}
 
 
 $con = conexion($db_config);
@@ -41,9 +43,8 @@ if ($_SESSION['usuario_anonimo']!=null) {
     $contadorCarrito = totalProductosEnCarrito($con, ['code' => session__get("usuario_anonimo")]);
     $enCarrito = enCarrito($con, ['code' => session__get("usuario_anonimo")]);
 }
-
 $title = "Inicio Pagina"; // Nombre del title
-
+$header='./templates/header.template.php';
 $page = './pages/inicio.page.php'; // Nombre y ruta de la pagina
 require './templates/home.template.php'; // Require template
 require './templates/carrito.template.php';
