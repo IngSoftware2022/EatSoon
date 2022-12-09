@@ -5,6 +5,7 @@ error_reporting(E_ALL ^ E_NOTICE);
     require './config/conexion.php';
     require './functions/loginf.php';
     require './functions/file.php';
+    require './functions/carrito.php';
 if (!$_SESSION){
     iniSesion();
 }
@@ -20,6 +21,12 @@ if (!$_SESSION){
         $user=loginUser($con, $data);
         if ($user!=null){
             iniSesion();
+            if ($_SESSION['usuario_anonimo']==null){
+                session__set("usuario_anonimo",getToken(6));
+            }else{
+                $data['code'] = session__get("usuario_anonimo");
+                $create = vaciarItem($con, $data);
+            }
             session__set("user",$user['CORREO']);
             ob_start();
             $url = RUTA.'/index_usuario_creado.php';

@@ -108,6 +108,7 @@
 
         </div>
     </section>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
           function mostrarContrasena() {
     var temp = document.getElementById("password");
@@ -127,6 +128,13 @@ function mostrarContrasenaConfi() {
       temp.type = "password";
   }
 }
+function fntdescartarCuenta(id){
+    document.getElementById('registroCuenta').reset();
+    swal("Se canceló el registro con éxito!!!", {
+      closeOnClickOutside: false,
+      icon: "success",
+    });
+  }
     </script>
     <script src="confirmarContraseña.js"></script>  
     <!-- Optional JavaScript; choose one of the two! -->
