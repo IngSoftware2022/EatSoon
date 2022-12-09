@@ -108,6 +108,26 @@
 
         </div>
     </section>
+    <script>
+          function mostrarContrasena() {
+    var temp = document.getElementById("password");
+    if (temp.type === "password") {
+        temp.type = "text";
+    }
+    else {
+        temp.type = "password";
+    }
+}
+function mostrarContrasenaConfi() {
+  var temp = document.getElementById("Cpassword");
+  if (temp.type === "password") {
+      temp.type = "text";
+  }
+  else {
+      temp.type = "password";
+  }
+}
+    </script>
     <script src="confirmarContraseña.js"></script>  
     <!-- Optional JavaScript; choose one of the two! -->
 
