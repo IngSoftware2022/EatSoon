@@ -1,9 +1,12 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
+require './functions/session.php';
 require './config/env.php';
     require './config/conexion.php';
     require './functions/cuenta.php';
-
+if (!$_SESSION){
+    iniSesion();
+}
     $con = conexion($db_config);
     
     /** Verificar si se envio por el metodo POST */
@@ -38,4 +41,5 @@ require './config/env.php';
 
     $page = './pages/crearCuenta.pages.php';  // Nombre y ruta de la pagina
     require './templates/crearC.template.php'; // Require template
+exit();
 ?>

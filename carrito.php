@@ -1,9 +1,12 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
+require './functions/session.php';
 require './config/env.php';
 require './config/conexion.php';
 require './functions/carrito.php';
-
+if (!$_SESSION){
+    iniSesion();
+}
 $con = conexion($db_config);
 
 
@@ -14,11 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         'usuario_CI' => null,
         'code' => ""
     ];
-    if (!isset($_COOKIE["usuario_anonimo"])) {
-        setcookie("usuario_anonimo", getToken(6));
-        $data['code'] = $_COOKIE["usuario_anonimo"];
+    if ($_SESSION['usuario_anonimo']==null) {
+        iniSesion();
+        session__set("usuario_anonimo",getToken(6));
+        $data['code'] = session__get("usuario_anonimo");
     } else {
-        $data['code'] = $_COOKIE["usuario_anonimo"];
+        $data['code'] =session__get("usuario_anonimo");
     }
     switch ($_POST['action']) {
         case 'agregar':
@@ -57,16 +61,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $create = comprarItem($con, $data);
             if (!$create) {
                 $message = "Tienes que iniciar session para continuar la su pedido";
-                header('Location: crear.php?page=' . $_POST['page'] . '&m=' . $message);
-                exit;
+                $url = RUTA.'/crear.php?page=' . $_POST['page'] . '&m=' . $message;
+                while (ob_get_status())
+                {
+                    ob_end_clean();
+                }
+                header( "Location: $url" );
+                exit();
             }
             break;
         default:
             # code...
             break;
     }
-    header('Location: index.php?page=' . $_POST['page'] . '&m=' . $message);
-    exit;
+    $url = RUTA.'/index_usuario_creado.php?page=' . $_POST['page'] . '&m=' . $message;
+    while (ob_get_status())
+    {
+        ob_end_clean();
+    }
+    header( "Location: $url" );
+    exit();
 }
-header('Location: index.php');
-exit;
+$url = RUTA.'/index.php';
+while (ob_get_status())
+{
+    ob_end_clean();
+}
+header( "Location: $url" );
+exit();
+?>
