@@ -122,15 +122,22 @@ function aumentarItem($con, $data)
         $query2->execute();
         $existe = $query2->fetchAll();
         if (count($existe) > 0) {
-            $carr = $con->prepare("UPDATE carrito SET cantidad = ? WHERE carrito_id = ? AND code= ?");
+            $product_id= $existe[0]['producto_id_producto'];
+            $queryP = $con->prepare("SELECT * FROM producto WHERE id_producto = '$product_id' LIMIT 1");
+            $queryP->execute();
+            $row = $queryP->fetch(PDO::FETCH_ASSOC);
+            $stock=$row['cantidad'];
             $contar = $existe[0]['cantidad'] + 1;
-            /*array respetando el orden de cada valor*/
-            $arrParams = array($contar, $pro, $cod);
-            /*Pasamos el array en el execute*/
-            if ($carr->execute($arrParams)) {
-                return true;
-            } else {
-                return false;
+            if ($contar<=$stock) {                
+                $carr = $con->prepare("UPDATE carrito SET cantidad = ? WHERE carrito_id = ? AND code= ?");
+                /*array respetando el orden de cada valor*/
+                $arrParams = array($contar, $pro, $cod);
+                /*Pasamos el array en el execute*/
+                if ($carr->execute($arrParams)) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
     }
@@ -203,6 +210,17 @@ function comprarItem($con, $data){
                         ':fecha_Pedido'=>date('y-m-d H:i:s'),
                         ':estado'=>"pedido"
                         ]);
+                        $pros=$value['producto_id'];
+                        $queryP = $con->prepare("SELECT * FROM producto WHERE id_producto = '$pros' LIMIT 1");
+                        $queryP->execute();
+                        $row = $queryP->fetch(PDO::FETCH_ASSOC);
+                        $stock=$row['cantidad'];
+                        $carr = $con->prepare("UPDATE producto SET cantidad = ? WHERE id_producto = ?");
+                        $total=abs($stock - $value['cantidad']);
+                        $arrParams = array($total, $pros);
+                        if ($carr->execute($arrParams)){
+                            #code
+                        }
                     } catch (Exception $e) {
                        var_dump($e->getMessage());
                     }
