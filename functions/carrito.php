@@ -221,8 +221,9 @@ function confirmarCompra($con, $data){
     if ($con && $data) {
        $pedido= $data['pedido'];
        $estado= $data['estado'];
-       $pedido_result = $con->prepare("UPDATE pedido SET estado = ? WHERE codPedido = ?");
-       $arrParams = array($estado, $pedido);
+       $user= $data['user_id'];
+       $pedido_result = $con->prepare("UPDATE pedido SET estado = ?,usuario_CI=? WHERE codPedido = ?");
+       $arrParams = array($estado,$user, $pedido);
        $res=$pedido_result->execute($arrParams);
        if ($res) {
            return true;

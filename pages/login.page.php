@@ -3,6 +3,12 @@
     <div class="Caja">
    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
    <h1 class="animate__animated animate__backInLeft">Inicia Sesión</h1>
+   <?php if (isset($_GET['m'])) {
+        ?>
+        <div class="alert alert-success text-center" role="alert">
+        <?php echo($_GET['m'])?>
+        </div>
+        <?php }?>
    <p class="blanco">   Correo: 
       <input type="email" name="correo" placeholder="Ingrese su correo" 
          required minlength ="3" maxlength ="40" ></p>

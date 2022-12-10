@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $create = comprarItem($con, $data);
             if (!$create) {
                 $message = "Tienes que iniciar session para continuar la su pedido";
-                $url = RUTA.'/crear.php?page=' . $_POST['page'] . '&m=' . $message;
+                $url = RUTA.'/login.php?m=' . $message;
                 while (ob_get_status())
                 {
                     ob_end_clean();
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             # code...
             break;
     }
-    $url = RUTA.'/index_usuario_creado.php?page=' . $_POST['page'] . '&m=' . $message;
+    $url = RUTA.'/index_usuario_creado.php?ver=1&page=' . $_POST['page'] . '&m=' . $message;
     while (ob_get_status())
     {
         ob_end_clean();

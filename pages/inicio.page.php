@@ -180,3 +180,11 @@
 <footer class="bg-dark">
     <div style="height: 6vh;"></div>
 </footer>
+<?php if (isset($_GET['ver'])) {
+        ?>
+       <script>
+        $(document).ready(function(){
+            $('#demo').modal('show');
+        });
+       </script>
+<?php }?>

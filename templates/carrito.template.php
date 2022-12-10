@@ -21,9 +21,10 @@ $total=0;
                         </tr>
                     </thead>
                     <tbody>
+                    <?php $i=1; ?>
                         <?php foreach ($enCarrito as $carito) : ?>
                             <tr>
-                                <th scope="row"><?php echo ($carito['carrito_id']); ?></th>
+                                <th scope="row" id="<?php echo ($carito['carrito_id']);?>"><?php echo($i);?></th>
                                 <td><img src="<?php echo RUTA . '/storage/' . $carito['imagen'] ?>" width="30" /> <?php echo ($carito['nombre_producto']); ?></td>
                                 <td><?php echo ($carito['cantidad']); ?></td>
                                 <td>
@@ -55,7 +56,7 @@ $total=0;
                                     </form>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php $i++; endforeach; ?>
                     </tbody>
                 </Table>
             </div>

@@ -32,8 +32,16 @@ if (!$_SESSION){
         // }
 
         $create = createUser($con, $data);
-        if(!$create){
-            header('Location: https://youtube.com');
+        if($create){
+           // header('Location: https://youtube.com');
+           $url = RUTA.'/login.php?m=Inicia sesion para confirmar tu cuenta';
+           while (ob_get_status())
+           {
+               ob_end_clean();
+           }
+           //header( "Location: $url" );
+           echo "<script>window.location = '$url'</script>";
+           exit();
         }
     }
     

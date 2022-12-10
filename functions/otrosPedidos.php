@@ -8,7 +8,7 @@ function mostrarOtrosPedidos($con){
             $user = $usuario->fetch(PDO::FETCH_ASSOC);
             $ci= $user['CI'];
             $pedido='pedido';
-            $query = $con->prepare("SELECT * FROM pedido JOIN producto ON (pedido.producto_id_producto=producto.id_producto) WHERE usuario_CI = '$ci' AND estado='$pedido'");
+            $query = $con->prepare("SELECT * FROM pedido JOIN producto ON (pedido.producto_id_producto=producto.id_producto) WHERE producto_usuario_id = '$ci' AND estado='$pedido'");
                 $query->execute();
          return $query->fetchAll();
         }
