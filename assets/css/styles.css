@@ -497,3 +497,10 @@ content: "";
 border: 7px solid transparent;
 border-bottom-color: #FFFFFF;
 }
+.card-hover{
+    background-color: #f8b318;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #382804;
+}
+.card-hover:hover{
+    background-color: #ffffff;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #ffffff;
+    color: #333333;
+}
