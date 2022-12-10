@@ -82,6 +82,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header( "Location: $url" );
     exit();
 }
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    if (isset($_GET['confirmar'])) {
+        switch ($_GET['confirmar']) {
+            case 1:
+                $create = confirmarCompra($con, $data);
+                $message = "";
+                if (!$create) {
+                    $message = "compra confirmada";
+                    $url = RUTA.'/historial.php';
+                    while (ob_get_status())
+                    {
+                        ob_end_clean();
+                    }
+                    header( "Location: $url" );
+                    exit();
+                } else {
+                    $message = "Error al confirmar";
+                }
+                break;
+            default:
+                # code...
+                break;
+        }
+    }
+}
 $url = RUTA.'/index.php';
 while (ob_get_status())
 {

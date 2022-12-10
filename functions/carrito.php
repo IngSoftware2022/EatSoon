@@ -216,3 +216,9 @@ function comprarItem($con, $data){
     }
     return false;
 }
+function confirmarCompra($con, $data){
+    if ($con && $data) {
+        return true;
+    }
+    return false;
+}

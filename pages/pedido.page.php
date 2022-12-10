@@ -14,15 +14,15 @@
     });
 </script>
 <main>
-    <div style="background-image: url('<?= RUTA ?>/assets/img/fondo tabla.jpeg');background-size: cover;height: 90vh;background-position: center;background-repeat: no-repeat;width: 100%;">
+    <div style="background-image: url('<?= RUTA ?>/assets/img/fondo tabla.jpeg');background-size: cover;background-position: center;background-repeat: no-repeat;width: 100%;">
         <div class="container ">
             <div class="row ">
-                <h1 class="mb-5 mt-5 text-white">Lista de solicitud de pedidos</h1>
-                <div>
+                <h1 class="mb-5 mt-5 text-white">Lista de mis solicitud de pedidos</h1>
+                <div style="height: 800px;overflow: auto;">
                 
                 <?php foreach ($pedidos as $pedido) : ?>
                     <a data-bs-toggle="modal" data-bs-target="#pedido<?php echo($pedido['codPedido']);?>">
-                        <div class="card mb-4" style="background-color: #f8b318;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #382804;">
+                        <div class="card mb-4 card-hover" style="background-color: #f8b318;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #382804;">
                             <table>
                                 <tr>
                                     <th>
@@ -61,7 +61,15 @@
                                                     <div><h5>Pedido #<?php echo($pedido['codPedido']);?></h5></div>
                                                     <div><h5>Usuario:<?php echo($pedido['usuario_CI']);?></h5></div>
                                                     <div><h5>Fecha: <em><?php echo($pedido['fecha_Pedido']);?></em></h5></div>
-                                                    <img src="<?= RUTA ?>/assets/img/bien amarillo.jpeg" width="100" alt="">
+                                                    <?php if ($pedido['estado']=="pedido") {
+                                                    ?>
+                                                    <span>Confirmar compra</span>
+                                                    <a href="carrito.php?confirmar=1">
+                                                        <img src="<?= RUTA ?>/assets/img/bien amarillo.jpeg" width="100" alt="">
+                                                    </a>
+                                                    <?php }else{?>
+                                                        <img src="<?= RUTA ?>/assets/img/bienverde.jpeg" width="100" alt="">
+                                                        <?php }?>
                                                 </div>
                                         </div>
                                         </div>

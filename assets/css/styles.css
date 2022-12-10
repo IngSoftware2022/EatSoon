@@ -428,6 +428,7 @@ border: 1px solid rgba(0, 0, 0, 0.15);
 padding-top: 5px;
 padding-bottom: 5px;
 margin-top: 45px;
+background: #212529fc;
 }
 .user-menu .profile-highlight {
 display: flex;

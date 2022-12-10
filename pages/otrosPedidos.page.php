@@ -14,12 +14,12 @@
     });
 </script>
 <main>
-    <div style="background-image: url('<?= RUTA ?>/assets/img/fondo tabla.jpeg');background-size: cover;height: 90vh;background-position: center;background-repeat: no-repeat;width: 100%;">
+    <div style="background-image: url('<?= RUTA ?>/assets/img/fondo tabla.jpeg');background-size: cover;background-position: center;background-repeat: no-repeat;width: 100%;">
         <div class="container ">
             <div class="row ">
-                <h1 class="mb-5 mt-5 text-white">Lista de solicitud de pedidos</h1>
-                <div>
-                
+                <h1 class="mb-5 mt-5 text-white">Lista de solicitudes de pedidos</h1>
+                <div style="height: 800px;overflow: auto;">
+                <?php $i=1; ?>
                 <?php foreach ($otrosPedidos as $pedido) : ?>
                     <a data-bs-toggle="modal" data-bs-target="#pedido<?php echo($pedido['codPedido']);?>">
                         <div class="card mb-4 card-hover">
@@ -29,7 +29,7 @@
                                         <h5>Pedido</h5>
                                     </th>
                                     <th>
-                                        <h5>#<?php echo($pedido['codPedido']);?></h5>
+                                        <h5 id="<?php echo($pedido['codPedido']); ?>">#<?php echo($i);?></h5>
                                     </th>
                                     <th>
                                         <h5>Usuario:<?php echo($pedido['usuario_CI']);?></h5>
@@ -58,10 +58,15 @@
                                         <div class="col-5">
                                         <div class="row justify-content-center">
                                                 <div class="col-8">
-                                                    <div><h5>Pedido #<?php echo($pedido['codPedido']);?></h5></div>
+                                                    <div><h5>Pedido #<?php echo($i);?></h5></div>
                                                     <div><h5>Usuario:<?php echo($pedido['usuario_CI']);?></h5></div>
                                                     <div><h5>Fecha: <em><?php echo($pedido['fecha_Pedido']);?></em></h5></div>
+                                                    <?php if ($pedido['estado']=="pedido") {
+                                                    ?>
                                                     <img src="<?= RUTA ?>/assets/img/bien amarillo.jpeg" width="100" alt="">
+                                                    <?php }else{?>
+                                                        <img src="<?= RUTA ?>/assets/img/bienverde.jpeg" width="100" alt="">
+                                                        <?php }?>
                                                 </div>
                                         </div>
                                         </div>
@@ -119,7 +124,7 @@
                         </div>
                     </div>
                     <!-- fin código modal -->
-                    <?php endforeach; ?>
+                    <?php $i++; endforeach; ?>
                 </div>
             </div>
         </div>
