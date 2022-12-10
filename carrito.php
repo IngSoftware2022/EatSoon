@@ -88,19 +88,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             case 1:
                 $data['pedido']=$_GET['pedido'];
                 $data['estado']="comprado";
-                $create = confirmarCompra($con, $data);
-                $message = "";
-                if ($create) {
-                    $message = "compra confirmada";
-                    $url = RUTA.'/historial.php';
-                    while (ob_get_status())
-                    {
-                        ob_end_clean();
+                if($_SESSION['user_id']!=null)
+                {
+                    $data['user_id']=session__get("user_id");;
+                    $create = confirmarCompra($con, $data);
+                    $message = "";
+                    if ($create) {
+                        $message = "compra confirmada";
+                        $url = RUTA.'/historial.php';
+                        while (ob_get_status())
+                        {
+                            ob_end_clean();
+                        }
+                        header( "Location: $url" );
+                        exit();
+                    } else {
+                        $url = RUTA.'/pedidos.php';
+                        while (ob_get_status())
+                        {
+                            ob_end_clean();
+                        }
+                        header( "Location: $url" );
+                        exit();
                     }
-                    header( "Location: $url" );
-                    exit();
-                } else {
-                    $message = "Error al confirmar";
                 }
                 break;
             default:

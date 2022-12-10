@@ -19,6 +19,9 @@
             <div class="row ">
                 <h1 class="mb-5 mt-5 text-white">Lista de solicitudes de pedidos</h1>
                 <div style="height: 800px;overflow: auto;">
+                <?php if (count($otrosPedidos)==0) {?>
+                    <div class="alert alert-danger text-center" role="alert">Usted no tiene pedidos solicitados</div>
+                <?php }?>
                     <?php $i = 1; ?>
                     <?php foreach ($otrosPedidos as $pedido) : ?>
                         <a data-bs-toggle="modal" data-bs-target="#pedido<?php echo ($pedido['codPedido']); ?>">

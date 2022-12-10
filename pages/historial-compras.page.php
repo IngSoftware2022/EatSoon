@@ -23,7 +23,10 @@
             <div class="row ">
                 <h1 class="mb-5 mt-5 text-white">Historial</h1>
                 <div style="height: 800px;overflow: auto;">
-
+                <?php if (count($pedidos)==0) {?>
+                    <div class="alert alert-danger text-center" role="alert">Usted no tiene productos comprados</div>
+                <?php }?>
+                    <?php $i = 1; ?>
                     <?php foreach ($pedidos as $pedido) : ?>
                         <a data-bs-toggle="modal" data-bs-target="#pedido<?php echo ($pedido['codPedido']); ?>">
                             <div class="card mb-4 card-hover">
@@ -132,7 +135,7 @@
                             </div>
                         </div>
                         <!-- fin código modal -->
-                    <?php endforeach; ?>
+                    <?php $i++; endforeach; ?>
                 </div>
             </div>
         </div>

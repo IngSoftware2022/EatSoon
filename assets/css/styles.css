@@ -505,3 +505,40 @@ border-bottom-color: #FFFFFF;
     background-color: #ffffff;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #ffffff;
     color: #333333;
 }
+.agregar-card{
+    padding: .25rem 1rem;
+    border-radius: 4px;
+    background-color: goldenrod;
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+.agregar-card:hover{
+    padding: .25rem 1rem;
+    border-radius: 4px;
+    background-color: rgb(236, 196, 95);
+    color: rgb(223, 219, 219);
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+.information-card{
+    padding: .25rem 1rem;
+    border-radius: 4px;                              
+    background-color: rgb(32, 113, 218);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+.information-card:hover{
+    padding: .25rem 1rem;
+    border-radius: 4px;                              
+    background-color: rgb(59, 134, 232);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+.btn{
+    border-radius: 10px !important;
+}

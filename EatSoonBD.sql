@@ -112,6 +112,7 @@ CREATE TABLE IF NOT EXISTS `eatsoon`.`visita` (
   `user` CHARACTER NOT NULL)
 ENGINE = InnoDB;
 ALTER TABLE eatsoon.pedido ADD estado varchar(100) NULL;
+ALTER TABLE eatsoon.producto ADD producto_usuario_id INTEGER NULL;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
