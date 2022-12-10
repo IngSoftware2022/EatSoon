@@ -19,104 +19,111 @@
             <div class="row ">
                 <h1 class="mb-5 mt-5 text-white">Lista de mis solicitud de pedidos</h1>
                 <div style="height: 800px;overflow: auto;">
-                
-                <?php foreach ($pedidos as $pedido) : ?>
-                    <a data-bs-toggle="modal" data-bs-target="#pedido<?php echo($pedido['codPedido']);?>">
-                        <div class="card mb-4 card-hover" style="background-color: #f8b318;font-size: x-large;padding: 10px;box-shadow: 1px 1px 1px #382804;">
-                            <table>
-                                <tr>
-                                    <th>
-                                        <h5>Pedido</h5>
-                                    </th>
-                                    <th>
-                                        <h5>#<?php echo($pedido['codPedido']);?></h5>
-                                    </th>
-                                    <th>
-                                        <h5>Usuario:<?php echo($pedido['usuario_CI']);?></h5>
-                                    </th>
-                                    <th>
-                                        <h5></h5>
-                                    </th>
-                                    <th>
-                                        <h5>Fecha:<?php echo($pedido['fecha_Pedido']);?></h5>
-                                    </th>
-                                    <th>
-                                        <h5></h5>
-                                    </th>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
 
-                    <!-- código modal -->
-                    <div class="modal fade" id="pedido<?php echo($pedido['codPedido']);?>">
-                        <div class="modal-dialog modal-lg" style="    transform: translate(0, 100%);min-height: 15rem; min-width: 71%; margin: auto;">
-                            <div class="modal-content bg-dark">
-                                <div class="modal-body">
-                                    <div class="row justify-content-center text-white">
-                                        <h1>Información sobre el Pedido</h1>
-                                        <div class="col-5">
-                                        <div class="row justify-content-center">
-                                                <div class="col-8">
-                                                    <div><h5>Pedido #<?php echo($pedido['codPedido']);?></h5></div>
-                                                    <div><h5>Usuario:<?php echo($pedido['usuario_CI']);?></h5></div>
-                                                    <div><h5>Fecha: <em><?php echo($pedido['fecha_Pedido']);?></em></h5></div>
-                                                    <?php if ($pedido['estado']=="pedido") {
-                                                    ?>
-                                                    <span>Confirmar compra</span>
-                                                    <a href="carrito.php?confirmar=1">
-                                                        <img src="<?= RUTA ?>/assets/img/bien amarillo.jpeg" width="100" alt="">
-                                                    </a>
-                                                    <?php }else{?>
-                                                        <img src="<?= RUTA ?>/assets/img/bienverde.jpeg" width="100" alt="">
-                                                        <?php }?>
+                    <?php foreach ($pedidos as $pedido) : ?>
+                        <a data-bs-toggle="modal" data-bs-target="#pedido<?php echo ($pedido['codPedido']); ?>">
+                            <div class="card mb-4 card-hover">
+                                <table>
+                                    <tr>
+                                        <th>
+                                            <h5>Pedido</h5>
+                                        </th>
+                                        <th>
+                                            <h5>#<?php echo ($pedido['codPedido']); ?></h5>
+                                        </th>
+                                        <th>
+                                            <h5>Usuario:<?php echo ($pedido['usuario_CI']); ?></h5>
+                                        </th>
+                                        <th>
+                                            <h5></h5>
+                                        </th>
+                                        <th>
+                                            <h5>Fecha:<?php echo ($pedido['fecha_Pedido']); ?></h5>
+                                        </th>
+                                        <th>
+                                            <h5></h5>
+                                        </th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </a>
+
+                        <!-- código modal -->
+                        <div class="modal fade" id="pedido<?php echo ($pedido['codPedido']); ?>">
+                            <div class="modal-dialog modal-lg" style="    transform: translate(0, 100%);min-height: 15rem; min-width: 71%; margin: auto;">
+                                <div class="modal-content bg-dark">
+                                    <div class="modal-body">
+                                        <div class="row justify-content-center text-white">
+                                            <h1>Información sobre el Pedido</h1>
+                                            <div class="col-5">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-8">
+                                                        <div>
+                                                            <h5>Pedido #<?php echo ($pedido['codPedido']); ?></h5>
+                                                        </div>
+                                                        <div>
+                                                            <h5>Usuario:<?php echo ($pedido['usuario_CI']); ?></h5>
+                                                        </div>
+                                                        <div>
+                                                            <h5>Fecha: <em><?php echo ($pedido['fecha_Pedido']); ?></em></h5>
+                                                        </div>
+                                                        <?php if ($pedido['estado'] == "pedido") {
+                                                        ?>
+                                                            <span>Confirmar compra</span>
+                                                            <a href="carrito.php?confirmar=1&pedido=<?php echo ($pedido['codPedido']); ?>">
+                                                                <img src="<?= RUTA ?>/assets/img/bien amarillo.jpeg" width="100" alt="">
+                                                            </a>
+                                                        <?php } else { ?>
+                                                            <img src="<?= RUTA ?>/assets/img/bienverde.jpeg" width="100" alt="">
+                                                        <?php } ?>
+                                                    </div>
                                                 </div>
-                                        </div>
-                                        </div>
-                                        <div class="col-7">
-                                            <div class="row justify-content-center">
-                                                <div class="col-8">
-                                                    <table class="table">
-                                                        <tr>
-                                                            <th class="table-dark">
-                                                                <h4><b>Item</b></h4>
-                                                            </th>
-                                                            <th class="table-dark">
-                                                                <h4><b>Cantidad</b></h4>
-                                                            </th>
-                                                            <th class="table-dark">
-                                                                <h4><b>Total</b></h4>
-                                                            </th>
-                                                        </tr>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="table-dark" >
-                                                                    <h5><?php echo($pedido['nombre_producto']);?></h5>
-                                                                </td>
-                                                                <td class="table-dark text-center">
-                                                                    <h5><?php echo($pedido['tatal_Pedido']);?></h5>
-                                                                </td>
-                                                                <td class="table-dark">
-                                                                    <h5><?php echo($pedido['precio_producto']);?></h5>
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                    <hr>
-                                                    <div>
+                                            </div>
+                                            <div class="col-7">
+                                                <div class="row justify-content-center">
+                                                    <div class="col-8">
                                                         <table class="table">
                                                             <tr>
                                                                 <th class="table-dark">
-                                                                    <h5>Total productos:</h5>
-                                                                </th>
-                                                                <th class="table-dark text-left">
-                                                                    <h5><?php echo($pedido['tatal_Pedido']);?></h5>
+                                                                    <h4><b>Item</b></h4>
                                                                 </th>
                                                                 <th class="table-dark">
-                                                                    <h5><?php echo((int)$pedido['tatal_Pedido'] * floatval($pedido['precio_producto']));?> Bs</h5>
+                                                                    <h4><b>Cantidad</b></h4>
+                                                                </th>
+                                                                <th class="table-dark">
+                                                                    <h4><b>Total</b></h4>
                                                                 </th>
                                                             </tr>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="table-dark">
+                                                                        <h5><?php echo ($pedido['nombre_producto']); ?></h5>
+                                                                    </td>
+                                                                    <td class="table-dark text-center">
+                                                                        <h5><?php echo ($pedido['tatal_Pedido']); ?></h5>
+                                                                    </td>
+                                                                    <td class="table-dark">
+                                                                        <h5><?php echo ($pedido['precio_producto']); ?></h5>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
                                                         </table>
+                                                        <hr>
+                                                        <div>
+                                                            <table class="table">
+                                                                <tr>
+                                                                    <th class="table-dark">
+                                                                        <h5>Total productos:</h5>
+                                                                    </th>
+                                                                    <th class="table-dark text-left">
+                                                                        <h5><?php echo ($pedido['tatal_Pedido']); ?></h5>
+                                                                    </th>
+                                                                    <th class="table-dark">
+                                                                        <h5><?php echo ((int)$pedido['tatal_Pedido'] * floatval($pedido['precio_producto'])); ?> Bs</h5>
+                                                                    </th>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,8 +132,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- fin código modal -->
+                        <!-- fin código modal -->
                     <?php endforeach; ?>
                 </div>
             </div>

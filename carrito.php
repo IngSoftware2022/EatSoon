@@ -86,9 +86,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['confirmar'])) {
         switch ($_GET['confirmar']) {
             case 1:
+                $data['pedido']=$_GET['pedido'];
+                $data['estado']="comprado";
                 $create = confirmarCompra($con, $data);
                 $message = "";
-                if (!$create) {
+                if ($create) {
                     $message = "compra confirmada";
                     $url = RUTA.'/historial.php';
                     while (ob_get_status())

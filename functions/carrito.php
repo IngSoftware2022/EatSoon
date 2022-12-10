@@ -38,7 +38,7 @@ function agregarAlCarrito($con, $data)
         $query2->execute();
         $existe = $query2->fetchAll();
         if (count($existe) > 0) {
-            $carr = $con->prepare("UPDATE carrito SET cantidad = ? WHERE producto_id = ? AND code= ?");
+            $carr = $con->prepare("UPDATE carrito SET cantidad = ?  WHERE producto_id = ? AND code= ?");
             $contar = $existe[0]['cantidad'] + 1;
             /*array respetando el orden de cada valor*/
             $arrParams = array($contar, $pro, $cod);
@@ -192,15 +192,16 @@ function comprarItem($con, $data){
                             producto_id_producto,
                             usuario_CI,
                             tatal_Pedido,
-                            fecha_Pedido)
-                        VALUES (null, :producto_id_producto, :usuario_CI, :tatal_Pedido, :fecha_Pedido)'
+                            fecha_Pedido,estado)
+                        VALUES (null, :producto_id_producto, :usuario_CI, :tatal_Pedido, :fecha_Pedido, :estado)'
                     );
                     try {
                         $res= $query2->execute([
                         ':producto_id_producto'=>$value['producto_id'],
                         ':usuario_CI'=>$user['CI'],
                         ':tatal_Pedido'=>$value['cantidad'],
-                        ':fecha_Pedido'=>date('y-m-d H:i:s')
+                        ':fecha_Pedido'=>date('y-m-d H:i:s'),
+                        ':estado'=>"pedido"
                         ]);
                     } catch (Exception $e) {
                        var_dump($e->getMessage());
@@ -218,7 +219,16 @@ function comprarItem($con, $data){
 }
 function confirmarCompra($con, $data){
     if ($con && $data) {
-        return true;
+       $pedido= $data['pedido'];
+       $estado= $data['estado'];
+       $pedido_result = $con->prepare("UPDATE pedido SET estado = ? WHERE codPedido = ?");
+       $arrParams = array($estado, $pedido);
+       $res=$pedido_result->execute($arrParams);
+       if ($res) {
+           return true;
+       } else {
+           return false;
+       }
     }
     return false;
 }
